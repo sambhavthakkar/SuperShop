@@ -1,0 +1,35 @@
+import 'package:flutter/material.dart';
+import 'package:supershop/common/widgets/texts/sectionHeading.dart';
+import 'package:supershop/utils/constants/colors.dart';
+import 'package:supershop/utils/constants/image_strings.dart';
+import 'package:supershop/utils/constants/rounded_container.dart';
+import 'package:supershop/utils/constants/sizes.dart';
+import 'package:supershop/utils/helpers/helper_functions.dart';
+
+class BillingPaymentSection extends StatelessWidget {
+  const BillingPaymentSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final dark = BHelperFunctions.isDarkMode(context);
+    return Column(
+      children: [
+        BSectionHeading(title: 'Payment Method', buttonTitle: 'Change', onPressed: () {
+          
+        },), 
+        const SizedBox(height: BSizes.spaceBtwItems / 2,), 
+        Row(
+          children: [
+            BRoundedContainer(
+              width: 60, height: 35, backgroundColor: dark ? BColors.light: BColors.white,
+              padding: const EdgeInsets.all(BSizes.sm),
+              child: const Image(image: AssetImage(BImages.paypal,), fit: BoxFit.contain,),
+            ), 
+            const SizedBox(width: BSizes.spaceBtwItems / 2,), 
+            Text('Paypal', style: Theme.of(context).textTheme.bodyLarge), 
+          ],
+        )
+      ],
+    );
+  }
+}
